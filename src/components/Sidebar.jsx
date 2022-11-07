@@ -4,12 +4,13 @@ import { HiOutlineHashtag, HiOutlineHome, HiOutlineMenu, HiOutlinePhotograph, Hi
 import { RiCloseLine } from 'react-icons/ri';
 
 import { logo } from '../assets';
+import isProdFunc from "../utils/Production";
 
 const links = [
-  { name: 'Discover', to: '/spotify-clone', icon: HiOutlineHome },
-  { name: 'Around You', to: '/spotify-clone/around-you', icon: HiOutlinePhotograph },
-  { name: 'Top Artists', to: '/spotify-clone/top-artists', icon: HiOutlineUserGroup },
-  { name: 'Top Charts', to: '/spotify-clone/top-charts', icon: HiOutlineHashtag },
+  { name: 'Discover', to: `${isProdFunc()}/`, icon: HiOutlineHome },
+  { name: 'Around You', to: `${isProdFunc()}/around-you`, icon: HiOutlinePhotograph },
+  { name: 'Top Artists', to: `${isProdFunc()}/top-artists`, icon: HiOutlineUserGroup },
+  { name: 'Top Charts', to: `${isProdFunc()}/top-charts`, icon: HiOutlineHashtag },
 ];
 
 const NavLinks = ({ handleClick }) => (

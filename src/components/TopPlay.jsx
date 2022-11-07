@@ -10,6 +10,7 @@ import { useGetTopChartsQuery } from '../redux/services/shazamCore';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
+import isProdFunc from "../utils/Production";
 
 const TopChartCard = ({ song, i, isPlaying, activeSong, handlePauseClick, handlePlayClick }) => (
   <div className={`w-full flex flex-row items-center hover:bg-[#4c426e] ${activeSong?.title === song?.title ? 'bg-[#4c426e]' : 'bg-transparent'} py-2 p-4 rounded-lg cursor-pointer mb-2`}>
@@ -17,12 +18,12 @@ const TopChartCard = ({ song, i, isPlaying, activeSong, handlePauseClick, handle
     <div className="flex-1 flex flex-row justify-between items-center">
       <img className="w-20 h-20 rounded-lg" src={song?.images?.coverart} alt={song?.title} />
       <div className="flex-1 flex flex-col justify-center mx-3">
-        <Link to={`/spotify-clone/songs/${song.key}`}>
+        <Link to={`${isProdFunc()}/songs/${song.key}`}>
           <p className="text-xl font-bold text-white">
             {song?.title}
           </p>
         </Link>
-        <Link to={`/spotify-clone/artists/${song?.artists[0].adamid}`}>
+        <Link to={`${isProdFunc()}/artists/${song?.artists[0].adamid}`}>
           <p className="text-base text-gray-300 mt-1">
             {song?.subtitle}
           </p>
@@ -65,7 +66,7 @@ const TopPlay = () => {
       <div className="w-full flex flex-col">
         <div className="flex flex-row justify-between items-center">
           <h2 className="text-white font-bold text-2xl">Top Charts</h2>
-          <Link to="/spotify-clone/top-charts">
+          <Link to={`${isProdFunc()}/top-charts`}>
             <p className="text-gray-300 text-base cursor-pointer">See more</p>
           </Link>
         </div>
@@ -88,7 +89,7 @@ const TopPlay = () => {
       <div className="w-full flex flex-col mt-8">
         <div className="flex flex-row justify-between items-center">
           <h2 className="text-white font-bold text-2xl">Top Artists</h2>
-          <Link to="/spotify-clone/top-artists">
+          <Link to={`${isProdFunc()}/top-artists`}>
             <p className="text-gray-300 text-base cursor-pointer">See more</p>
           </Link>
         </div>
@@ -108,7 +109,7 @@ const TopPlay = () => {
               style={{ width: '25%', height: 'auto' }}
               className="shadow-lg rounded-full animate-slideright"
             >
-              <Link to={`/spotify-clone/artists/${artist?.artists[0].adamid}`}>
+              <Link to={`${isProdFunc()}/artists/${artist?.artists[0].adamid}`}>
                 <img src={artist?.images?.background} alt="Name" className="rounded-full w-full object-cover" />
               </Link>
             </SwiperSlide>

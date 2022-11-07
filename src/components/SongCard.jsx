@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import PlayPause from './PlayPause';
 import { playPause, setActiveSong } from '../redux/features/playerSlice';
+import isProdFunc from "../utils/Production";
 
 const SongCard = ({ song, isPlaying, activeSong, data, i }) => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const SongCard = ({ song, isPlaying, activeSong, data, i }) => {
 
       <div className="mt-4 flex flex-col">
         <p className="font-semibold text-lg text-white truncate">
-          <Link to={`/spotify-clone/songs/${song?.key}`}>
+          <Link to={`${isProdFunc()}/songs/${song?.key}`}>
             {song.title}
           </Link>
         </p>
